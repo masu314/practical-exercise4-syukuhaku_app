@@ -1,0 +1,21 @@
+<%= render "shared/searchber" %>
+<div class="container RoomsContainer">
+    <p class="RoomsContainer__result"><span class="fw-bold lead"> <%= @rooms.count%> </span>件が見つかりました。</p>
+    <ul class="RoomList d-flex flex-wrap ps-0">
+        <% @rooms.each do |room| %>
+            <li class="Room list-unstyled mb-5">
+                <%= image_tag room.room_image.thumb437.url, class:"Room__image" %>
+                <div class="RoomBodyWrapper px-3 py-5">
+                    <p class="Room__name fs-4 mb-0"><%= room.room_name %></p>
+                    <p class="Room__address"><%= room.room_address %></p>
+                    <p class="Room__content"><%= room.room_introduction %></p>
+                    <div class="RoomFooter d-flex justify-content-between">
+                        <p class="Room__price fs-2">¥<%= room.room_price %>~</p>
+                        <p class="Room__link"><%= link_to "詳細はこちら", room, class:"btn btn-primary p-3"%></p>
+                    </div>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+</div>
+<%= render "shared/footer" %>

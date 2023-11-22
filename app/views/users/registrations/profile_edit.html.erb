@@ -1,0 +1,39 @@
+<div class="container UserSection">
+  <h2 class="mb-4">設定</h2>
+  <div class="UserContainer d-flex gap-3">
+    <%= render "shared/sideber" %>
+    <div class="AccountInformation w-75">
+      <div class="AccountInformation__header border-bottom d-flex justify-content-between">
+        <h3>プロフィール</h3>
+      </div>
+      <%= form_for current_user, url:profile_update_path do |f| %>
+        <div class="AccountInformation__input-group d-flex pt-3">
+          <%= f.label :user_image ,"アイコン画像",class:"w-25" %>
+          <div class="value w-75 d-flex gap-3">
+            <%= image_tag current_user.user_image.thumb.url, class: "icon_image" %>
+            <%= f.file_field :user_image, autofocus: true, class:"form-control file-field" %>
+          </div>
+        </div>
+        <div class="AccountInformation__input-group d-flex pt-3">
+          <%= f.label :user_name ,"名前",class:"w-25" %>
+          <div class="value w-75 d-flex gap-3">
+            <%= f.text_field :user_name, class:"form-control" %>
+          </div>
+        </div>
+        <div class="AccountInformation__input-group d-flex pt-3">
+          <%= f.label :user_introduction ,"自己紹介",class:"w-25" %>
+          <div class="value w-75 d-flex gap-3">
+            <%= f.text_area :user_introduction, class:"form-control" %>
+          </div>
+        </div>
+        <div class="actions d-flex justify-content-end pt-3 gap-3">
+          <%= f.submit "保存",class:"btn btn-primary"%>
+          <%= link_to :users_profile, class:"btn btn-outline-secondary" do %>
+            キャンセル
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "shared/footer" %>

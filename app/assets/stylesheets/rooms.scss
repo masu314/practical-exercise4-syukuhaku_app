@@ -1,0 +1,61 @@
+.FormWrapper {
+    padding: 40px 0 180px;
+}
+
+.FormContainer{
+    margin: 0 auto;
+    width: 702px;
+}
+
+.required:after {
+    content: " *";
+    color: #E00;
+}
+
+.SearchRoomsFormContainer{
+background-color: #dfe2e6;
+height: 125px;
+}
+
+.SearchRoomsForm{
+    height:40%;
+    width:40%;
+}
+
+.RoomList{
+    gap: 32px;
+}
+
+.Room{
+    border-radius: 26px;
+    width: 437px;
+    background-color:#fff8f1;
+}
+
+.Room__image{
+    border-radius: 26px 26px 0 0;
+}
+
+.Room__price{
+    color: red;
+}
+
+.Room__introduction{
+    font-size: 17px;
+}
+
+.RoomDetailsBody{
+    background-color:#fff8f1;
+}
+
+.ReservationForm__input-container{
+    background-color: white;
+}
+
+.Roomdetails_Room__image{
+    height:fit-content;
+}
+
+.RoomDetailsBody{
+    width: 58%;
+}

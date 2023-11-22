@@ -1,0 +1,50 @@
+<div class="container ReservationsContainer">
+
+<h3>予約済み一覧</h3>
+ 
+ <table class="table">
+   <thead>
+     <tr>
+       <th>画像</th>
+       <th style="width: 10%">施設名</th>
+       <th style="width: 40%">紹介文</th>
+       <th>合計料金</th>
+       <th>チェックイン</th>
+       <th>チェックアウト</th>
+       <th>予約確定日時</th>
+     </tr>
+   </thead>
+ 
+   <tbody class="table-group-divider">
+     <% @reservations.each do |reservation| %>
+       <tr>
+         <td><%= image_tag reservation.room.room_image.thumb130.url %></td>
+         <td>
+          <%= link_to reservation.room do %>
+            <%= reservation.room.room_name %>
+          <% end %>
+        </td>
+         <td><%= reservation.room.room_introduction %></td>
+         <% remain = (reservation.check_out_date - reservation.check_in_date).to_i %>
+         <% totalprice = (reservation.room.room_price * remain * reservation.user_num) %>
+         <td>¥<%= totalprice %></td>
+         <td><%= reservation.check_in_date.strftime('%Y/%m/%d') %></td>
+         <td><%= reservation.check_out_date.strftime('%Y/%m/%d') %></td>
+         <td><%= reservation.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+         <td>
+          <div class="dropdown">
+            <div data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-three-dots-vertical "></i>
+            </div>
+            <ul class="dropdown-menu">
+              <li><%= link_to "再予約" , [:edit, reservation] ,class:"dropdown-item"%></li>
+              <li><%= link_to "予約を削除", reservation,class:"dropdown-item", method: :delete, data: { confirm: "本当に削除しますか？" } %></li>
+            </ul>
+          </div>
+         </td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>
+
+ </div>

@@ -1,0 +1,42 @@
+<div class="FormWrapper">
+  <div class="FormContainer">
+  <h2 class="mb-4">再予約する</h2>
+    <div class="ReservationDetails">
+      <%= image_tag @reservation.room.room_image.thumb.url, class:"mb-4" %>
+      <div class="ReservationDetails__title d-flex justify-content-between">
+        <div class="ReservationDetails__room-name fs-4">
+          <%= @reservation.room.room_name %>
+        </div>
+        <div class="ReservationDetails__room-price Room__price fs-4">
+          ¥<%= @reservation.room.room_price %>~
+        </div>
+      </div>
+      <p class="ReservationDetails__room-address">
+        <%= @reservation.room.room_address %>
+      </p>
+      <p class="ReservationDetails__room-content">
+        <%= @reservation.room.room_introduction %>
+      </p>
+      <%= form_with model: @reservation do |f| %>
+        <div class="ReservationsForm__input-group">
+          <%= f.label :check_in_date ,"チェックイン日",class:"d-block required" %>
+          <%= f.date_field :check_in_date, class:"form-control" %>
+        </div>
+        <div class="ReservationsForm__input-group">
+          <%= f.label :check_out_date ,"チェックアウト日",class:"d-block required" %>
+          <%= f.date_field :check_out_date, class:"form-control" %>
+        </div>
+        <div class="ReservationsForm__input-group">
+          <%= f.label :user_num ,"人数",class:"d-block required" %>
+          <%= f.number_field :user_num, class:"form-control" %>
+        </div>
+        <div class="d-grid gap-3"">
+          <%= f.submit "保存" ,class:"btn btn-primary"%>
+          <%= link_to :back, class:"btn btn-outline-secondary" do%>
+            キャンセル
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

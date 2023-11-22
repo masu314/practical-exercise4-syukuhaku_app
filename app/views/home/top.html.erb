@@ -1,0 +1,62 @@
+<div class="FirstView">
+    <section class="container">
+        <h2 class="FirstView_title">
+            Potepan Share で<br>
+            まだ体験したことのない<br>
+            旅をしよう
+        </h2>
+        <div class="row mb-3">
+        <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |f| %>
+            <div class="col-md-5 mx-auto">
+            <%= f.text_field :area, placeholder: "エリア名を入力", class:"form-control"%>
+            </div>
+            <div class="d-grid gap-2 col-5 mx-auto mt-3">
+            <%= f.submit "検索", class: "btn btn-primary" %>
+            </div>
+        <% end %>
+        </div>
+    </section>
+</div>
+<div class="RecommendAreaSection">
+    <h2 class="RecommendAreaSection__title">おすすめのエリア</h2>
+    <div class="RecommendAreas">
+        <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |f| %>
+            <%= f.hidden_field :area, :value => "東京都" %>
+            <%= button_tag type: :submit, class: "search-button" do %>
+        <div class="RecommendArea RecommendArea--tokyo">
+            <span class="RecommendArea__name RecommendArea__name--ja">東京</span>
+            <span class="RecommendArea__name RecommendArea__name--en">Tokyo</span>
+        </div>
+        <% end %>
+        <% end %>
+        <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |f| %>
+            <%= f.hidden_field :area, :value => "大阪" %>
+            <%= button_tag type: :submit, class: "search-button" do %>
+        <div class="RecommendArea RecommendArea--osaka">
+            <span class="RecommendArea__name RecommendArea__name--ja">大阪</span>
+            <span class="RecommendArea__name RecommendArea__name--en">Osaka</span>
+        </div>
+        <% end %>
+        <% end %>
+        <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |f| %>
+            <%= f.hidden_field :area, :value => "京都" %>
+            <%= button_tag type: :submit, class: "search-button" do %>
+        <div class="RecommendArea RecommendArea--kyoto">
+            <span class="RecommendArea__name RecommendArea__name--ja">京都</span>
+            <span class="RecommendArea__name RecommendArea__name--en">Kyoto</span>
+        </div>
+        <% end %>
+        <% end %>
+        <%= form_with(url: search_rooms_path, local: true, method: :get, class: "search-form") do |f| %>
+            <%= f.hidden_field :area, :value => "札幌" %>
+            <%= button_tag type: :submit, class: "search-button" do %>
+        <div class="RecommendArea RecommendArea--sapporo">
+            <span class="RecommendArea__name RecommendArea__name--ja">札幌</span>
+            <span class="RecommendArea__name RecommendArea__name--en">Sapporo</span>
+        </div>
+        <% end %>
+        <% end %>
+    </div>
+</div>
+<%= render "shared/footer" %>
+

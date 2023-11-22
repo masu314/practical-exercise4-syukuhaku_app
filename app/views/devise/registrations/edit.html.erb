@@ -1,0 +1,44 @@
+<div class="container UserSection">
+  <h2 class="mb-4">設定</h2>
+  <div class="UserContainer d-flex gap-3">
+    <%= render "shared/sideber" %>
+    <div class="AccountInformation w-75">
+      <div class="AccountInformation__header border-bottom d-flex justify-content-between">
+        <h3>アカウント</h3>
+      </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <div class="AccountInformation__input-group d-flex pt-3">
+          <%= f.label :email,class:"w-25" %>
+          <div class="value w-75 d-flex gap-3">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+          </div>
+        </div>
+        <div class="AccountInformation__input-group d-flex pt-3">
+          <%= f.label :password,class:"w-25" %>
+          <div class="value w-75 d-flex gap-3">
+            <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+          </div>
+        </div>
+        <div class="AccountInformation__input-group d-flex pt-3">
+          <%= f.label :password_confirmation,class:"w-25" %>
+          <div class="value w-75 d-flex gap-3">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+          </div>
+        </div>
+        <div class="AccountInformation__input-group d-flex pt-3">
+          <%= f.label :current_password,class:"w-25" %>
+          <div class="value w-75 d-flex gap-3">
+            <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control" %>
+          </div>
+        </div>
+        <div class="actions d-flex justify-content-end pt-3 gap-3">
+          <%= f.submit "保存", class:"btn btn-primary"%>
+          <%= link_to :users_account, class:"btn btn-outline-secondary" do%>
+            キャンセル
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "shared/footer" %>
