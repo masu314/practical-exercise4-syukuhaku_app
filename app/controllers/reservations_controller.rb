@@ -10,7 +10,7 @@ class ReservationsController < ApplicationController
   def confirm
     @reservation = Reservation.new(params.require(:reservation).permit(:check_in_date,:check_out_date,:user_num, :room_id))
     @reservation.user_id = current_user.id
-    unless @reservation.save
+    unless @reservation.valid?
       @room = Room.find(@reservation.room_id)
       render "rooms/show"
     end
