@@ -1,0 +1,44 @@
+<%= render "shared/searchber" %>
+<div class="container RoomDetailsContainer">
+  <div class="RoomDetailsHeader mb-3">
+    <%= link_to "←戻る", 'javascript:history.back()', class:"fs-5"%>
+  </div>
+  <div class="RoomDetails d-flex justify-content-between">
+    <%= image_tag @room.room_image.thumb520.url, class:"Roomdetails_Room__image" %>
+    <div class="RoomDetailsBody px-4 py-5">
+      <div class="RoomDetailsBody__name-and-price d-flex justify-content-between">
+        <p class="RoomDetails__name fs-4"><%= @room.room_name %></p>
+        <p class="RoomDetails__price Room__price fs-2">¥<%= @room.room_price %>~</p>
+      </div>
+      <p class="RoomDetails__address"><%= @room.room_address %></p>
+      <p class="RoomDetails__introduction Room__introduction"><%= @room.room_introduction %></p>
+
+      <%= form_with model: @reservation, url: confirm_reservations_path do |f| %>
+        <div class="ReservationForm__input-container d-flex p-4 gap-3">
+        <%= f.hidden_field :room_id, :value => @room.id %>
+          <div class="ReservationForm__input-group col-sm-4">
+            <%= f.label :check_in_date ,"チェックイン",class:"d-block" %>
+            <%= f.date_field :check_in_date, class:"form-control" %>
+          </div>
+          <div class="ReservationForm__input-group col-sm-4">
+            <%= f.label :check_out_date,"チェックアウト",class:"d-block" %>
+            <%= f.date_field :check_out_date, class:"form-control" %>
+          </div>
+          <div class="ReservationForm__input-group">
+            <%= f.label :user_num ,"人数",class:"d-block" %>
+            <%= f.number_field :user_num, class:"form-control" %>
+          </div>
+        </div>
+        <div class="ReservationForm__button d-grid mt-4">
+        <% if current_user %>
+          <%= f.submit "予約する",class:"btn btn-primary p-3"%>
+        <% else %>
+          <%= link_to "ログイン",new_user_session_path, class:"btn btn-primary p-3" %>
+        <% end %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "shared/footer" %>

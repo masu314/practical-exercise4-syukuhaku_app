@@ -1,0 +1,39 @@
+<div class="AccountFormWrapper">
+  <div class="AccountFormContainer">
+    <h2 class="AccountFormContainer_title text-center">
+      新規登録
+    </h2>
+    <div class="AccountForm">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+      <div class="mb-3">
+        <%= f.label :user_name, "ユーザー名",class:"form-label required" %>
+        <%= f.text_field :user_name, autofocus: true, class:"form-control" %>
+      </div>
+  
+  
+      <div class="mb-3">
+        <%= f.label :email,class:"form-label required"%>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password,class:"form-label required" %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control"%>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :password_confirmation ,class:"form-label required"%>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control"%>
+      </div>
+
+      <div class="d-grid gap-3">
+        <%= f.submit "新しいアカウントを作成",class:"btn btn-primary" %>
+        <%= link_to :new_user_session,class:"btn btn-outline-secondary" do %>
+          アカウントをお持ちの方はログイン
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container UserSection">
+    <h2 class="mb-4">設定</h2>
+    <div class="UserContainer d-flex gap-3">
+        <%= render "shared/sideber" %>
+        <div class="AccountInformation w-75">
+            <div class="AccountInformation__header border-bottom d-flex justify-content-between">
+                <h3>アカウント</h3>
+                <%= link_to edit_user_registration_path do %>
+                    編集
+                <% end %>
+            </div>
+            <div class="AccountInformation__input-group d-flex pt-3">
+                <label class="w-25">メールアドレス</label>
+                <p class="value w-75"><%= @user.email %></p>
+            </div>
+            <div class="AccountInformation__input-group d-flex pt-3">
+                <label class="w-25">パスワード</label>
+                <p class="value w-75">*********</p>
+            </div>
+        
+        </div>
+    </div>
+</div>
+<%= render "shared/footer" %>
