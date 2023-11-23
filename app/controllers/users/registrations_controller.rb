@@ -74,4 +74,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def after_update_path_for(resource)
+    users_account_path
+  end
+
 end
