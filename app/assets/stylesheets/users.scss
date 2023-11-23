@@ -1,0 +1,31 @@
+.AccountFormWrapper {
+    background-color: #dfe2e6;
+    min-height: calc(100vh - 90px);
+    padding: 100px;
+}
+
+.AccountFormContainer{
+    background-color: white;
+    margin: 0px auto;
+    padding: 30px 30px;
+    width: 600px;
+}
+
+.AccountFormContainer-login{
+    background-color: white;
+    width: 600px;
+    margin: 0px auto;
+    padding: 30px 30px;
+}
+
+.SideNavigation{
+    height: fit-content;
+}
+
+.file-field{
+    height: fit-content;
+}
+
+.icon_image{
+    border-radius: 50%;
+}

@@ -1,0 +1,42 @@
+<div class="FormWrapper">
+    <div class="FormContainer">
+        <h2 class="mb-4">予約内容の確認</h2>
+        <div class="Form ReservationConfirm">
+            <div class="ReservationConfirm__value-group">
+                <p class="ReservationConfirm__label">チェックイン</p>
+                <p><%= @reservation.check_in_date.strftime('%Y/%m/%d') %></p>
+            </div>
+            <div class="ReservationConfirm__value-group">
+                <p class="ReservationConfirm__label">チェックアウト</p>
+                <p><%= @reservation.check_out_date.strftime('%Y/%m/%d') %></p>
+            </div>
+            <div class="ReservationConfirm__value-group">
+                <p class="ReservationConfirm__label">日数</p>
+                <% remain = (@reservation.check_out_date - @reservation.check_in_date).to_i %>
+                <p><%= remain %>日</p>
+            </div>
+            <div class="ReservationConfirm__value-group">
+                <p class="ReservationConfirm__label">人数</p>
+                <p><%= @reservation.user_num %>人</p>
+            </div>
+            <div class="ReservationConfirm__value-group">
+                <p class="ReservationConfirm__label">お支払い金額</p>
+                <% totalprice = (@reservation.room.room_price * remain * @reservation.user_num) %>
+                <p>¥<%= totalprice %></p>
+            </div>
+            <p>上記内容で正しければ「確定」ボタンを押してください。</p>
+            <%= form_with model: @reservation, method: :post, url: reservations_path do |f| %>
+                <%= f.hidden_field :room_id, :value => @reservation.room_id %>
+                <%= f.hidden_field :check_in_date, :value => @reservation.check_in_date %>
+                <%= f.hidden_field :check_out_date, :value => @reservation.check_out_date %>
+                <%= f.hidden_field :user_num, :value => @reservation.user_num %>
+                <div class="d-grid gap-3">
+                    <%= f.submit "予約する", class:"btn btn-primary"%>
+                    <%= link_to "キャンセル", @reservation.room ,class:"btn btn-outline-secondary" %>
+                </div>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<%= render "shared/footer" %>

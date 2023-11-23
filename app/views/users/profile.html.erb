@@ -1,0 +1,34 @@
+<div class="container UserSection">
+    <h2 class="mb-4">設定</h2>
+    <div class="UserContainer d-flex gap-3">
+        <%= render "shared/sideber" %>
+        <div class="AccountInformation w-75">
+            <div class="AccountInformation__header border-bottom d-flex justify-content-between">
+                <h3>プロフィール</h3>
+                <%= link_to profile_edit_path do %>
+                    編集
+                <% end %>
+            </div>
+            <div class="AccountInformation__input-group d-flex pt-3">
+                <label class="w-25">アイコン画像</label>
+                <p class="value w-75 mb-0">
+                    <%= image_tag @user.user_image.thumb.url, class: "icon_image" %>
+                </p>
+            </div>
+            <div class="AccountInformation__input-group d-flex pt-3">
+                <label class="w-25">名前</label>
+                <p class="value w-75">
+                    <%= @user.user_name %>
+                </p>
+            </div>
+            <div class="AccountInformation__input-group d-flex pt-3">
+                <label class="w-25">自己紹介</label>
+                <p class="value w-75">
+                    <%= @user.user_introduction %>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<%= render "shared/footer" %>
+
