@@ -16,14 +16,14 @@ class Reservation < ApplicationRecord
     #チェックイン日が本日以降の日付となるようにする 
     def check_in_date_cannot_be_in_the_past
         if check_in_date.present? && check_in_date <= Date.today
-          errors.add(:expiration_date, "過去の日付は使えません")
+          errors.add(:check_in_date, "に過去の日付は使えません")
         end
     end
 
     #チェックアウト日がチェックイン日より後の日付となるようにする
     def check_out_date_cannot_be_before_check_in_date
-        if check_out_date.present? && check_in_date.present? && check_out_date < check_in_date
-          errors.add(:expiration_date, "チェックアウト日がチェックイン日より後になっていません")
+        if check_out_date.present? && check_in_date.present? && check_out_date <= check_in_date
+          errors.add(:check_out_date, "がチェックイン日より後になっていません")
         end
     end
 

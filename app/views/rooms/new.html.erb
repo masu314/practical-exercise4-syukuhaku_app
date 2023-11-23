@@ -40,6 +40,15 @@
       <% end %>
     </div>
     <% end %>
+    <% if @room.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger mt-3">
+        <ul>
+          <% @room.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
 </div>
 <%= render "shared/footer" %>
